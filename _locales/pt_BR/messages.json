@@ -1,0 +1,23 @@
+{
+  "extName": {
+    "message": "StreamElements Leaderboard Search"
+  },
+  "extDescription": {
+    "message": "Campo de busca para o ranking do StreamElements."
+  },
+  "searchPlaceholder": {
+    "message": "Buscar por usuário"
+  },
+  "loadingResult": {
+    "message": "Carregando..."
+  },
+  "emptyResult": {
+    "message": "Sem resultado para busca"
+  },
+  "searchError": {
+    "message": "Erro na busca:"
+  },
+  "abortSearch": {
+    "message": "Busca anterior abortada:"
+  }
+}

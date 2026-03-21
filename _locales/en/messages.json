@@ -1,0 +1,23 @@
+{
+  "extName": {
+    "message": "StreamElements Leaderboard Search"
+  },
+  "extDescription": {
+    "message": "StreamElements leaderboard search input to get back the leaderboard search."
+  },
+  "searchPlaceholder": {
+    "message": "Search by user"
+  },
+  "loadingResult": {
+    "message": "Loading..."
+  },
+  "emptyResult": {
+    "message": "Not result for search"
+  },
+  "searchError": {
+    "message": "Error in search:"
+  },
+  "abortSearch": {
+    "message": "Previous search aboarted:"
+  }
+}
