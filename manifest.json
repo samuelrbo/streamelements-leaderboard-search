@@ -8,7 +8,7 @@
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
-      "matches": ["https://streamelements.com/*/leaderboard"]
+      "matches": ["https://streamelements.com/*"]
     }
   ],
   "icons": {
