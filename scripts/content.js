@@ -1,5 +1,5 @@
 const SE_API = 'https://api.streamelements.com/kappa/v2';
-const SE_CONTAINER = 'div.space-y-6 div';
+const SE_CONTAINER = 'main div div';
 const SE_RESULT_ID = 'streamelements-leaderboard-search-result';
 
 let debounceTimer;
