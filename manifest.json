@@ -1,15 +1,14 @@
 {
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 3,
   "default_locale": "en",
-  "permissions": ["tabs", "<all_urls>"],
   "homepage_url": "https://github.com/samuelrbo/streamelements-leaderboard-search",
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
-      "matches": ["https://streamelements.com/*/leaderboard"]
+      "matches": ["https://streamelements.com/*"]
     }
   ],
   "icons": {
