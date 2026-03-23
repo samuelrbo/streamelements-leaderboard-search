@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "default_locale": "en",
-  "permissions": ["tabs", "<all_urls>"],
   "homepage_url": "https://github.com/samuelrbo/streamelements-leaderboard-search",
   "content_scripts": [
     {
