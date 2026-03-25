@@ -1,0 +1,57 @@
+name: CI/CD Extension Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Run E2E Tests (Docker)
+        run: |
+          docker-compose up --build --exit-code-from e2e
+
+      - name: Build Extension
+        run: npm run build:extension
+
+      - name: Create Extension Zip
+        run: |
+          zip -r streamelements-leaderboard.zip extension/* -x "*.git*"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension-zip
+          path: streamelements-leaderboard.zip
+
+  open-pr:
+    needs: test-and-build
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          pr_title: "Release: Merging develop into main"
+          pr_body: "Automated PR: All tests passed successfully."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
