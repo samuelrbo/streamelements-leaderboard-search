@@ -1,0 +1,32 @@
+FROM node:20-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  chromium \
+  xvfb \
+  xauth \
+  procps \
+  libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libgbm1 libasound2 \
+  libpangocairo-1.0-0 libpango-1.0-0 libcairo2 libxss1 \
+  && rm -rf /var/lib/apt/lists/*
+
+# Puppeteer config
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+  PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium \
+  DISPLAY=:99 \
+  CI=true
+
+WORKDIR /app
+
+# Cache node dependencies
+COPY package*.json ./
+
+# 'npm ci' is faster and more secure than npm install
+RUN npm ci
+
+# Copy project files
+COPY . .
+
+RUN npm run build:extension && chmod -R 777 /app/extension
+
+# execute tests using the xvfb
+CMD ["sh", "-c", "rm -f /tmp/.X99-lock && dbus-run-session -- xvfb-run --server-args='-screen 0 1280x1024x24' npm run test:e2e"]

@@ -7,9 +7,35 @@ This project is licensed under **GPLv3**.
 ---
 
 ## [Unreleased]
-- Planned improvements and upcoming changes will be listed here.
+-
 
 ---
+
+## [1.1.1] - 2026-03-25
+### Added
+- Update folder organization
+- Build plugin command
+- Update project structure
+- Tests with Puppeteer
+- Include Docker to execute e2e tests
+- Update documentation
+- GitHub Actions pipeline for automated testing.
+- Automated ZIP artifact generation on Tag push.
+
+## [1.1.0] - 2026-03-23
+### Added
+- Update plugin version
+- onUrlChange
+- New query to check the leaderboard table
+- Logged user points details on sidebar
+  - Position
+  - Usernam
+  - Points (Formatted)
+
+### Removed
+- Required permissions for chrome plugin on:
+  - tabs
+  - <all_urls>
 
 ## [1.0.0] — 2026-03-21
 ### Added

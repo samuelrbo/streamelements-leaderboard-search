@@ -1,10 +1,27 @@
-const SE_API = 'https://api.streamelements.com/kappa/v2';
-const SE_CONTAINER = 'div[data-slot="card-content"] table.w-full';
-const SE_SIDEBAR = 'aside';
-const SE_SIDEBAR_DETAILS = 'aside ul';
-const SE_RESULT_ID = 'streamelements-leaderboard-search-result';
-const SE_USERNAME = 'span.text-sm.text-white.font-medium';
-const SE_EARN_POINTS_TIME = 'div.mt-4.flex.flex-col p';
+if (typeof window === "undefined") {
+  global.window = {};
+  global.document = {
+    querySelector: () => null
+  };
+}
+
+const { commafy, getStreamerChannelName, extractTimeToMs } =
+  typeof window !== "undefined" && window.utils
+    ? window.utils
+    : require("./utils.js");
+
+const {
+  SE_API,
+  SE_CONTAINER,
+  SE_SIDEBAR,
+  SE_SIDEBAR_DETAILS,
+  SE_RESULT_ID,
+  SE_USERNAME,
+  SE_EARN_POINTS_TIME,
+} =
+  typeof window !== "undefined" && window.constants
+    ? window.constants
+    : require("./constants.js");
 
 let debounceTimer;
 let abortController;
@@ -18,7 +35,7 @@ let abortController;
  * @param {string[]} clazz Class string list
  */
 function element(type, attributes = null, clazz = []) {
-  var el = document.createElement(type);
+  let el = document.createElement(type);
 
   if (attributes) {
     for (attr in attributes) {
@@ -40,59 +57,12 @@ function element(type, attributes = null, clazz = []) {
 }
 
 /**
- * @description
- * Function to format a number with comman between 3-in-3 numbers
- *
- * @example
- * // returns "1,000"
- * commafy(1000)
- *
- * @example
- * // returns "100,000"
- * commafy(100000)
- *
- * @example
- * // returns "10,000,000"
- * commafy(10000000)
- *
- * @param {number} num
- *
- * @returns {string} Return a commafy number
- */
-function commafy( num ) {
-    var str = num.toString().split('.');
-    if (str[0].length >= 5) {
-        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-    }
-    if (str[1] && str[1].length >= 5) {
-        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
-    }
-    return str.join(',');
-}
-
-/**
- * @description
- * Get the streamer channel name from the StreamElements URL
- *
- * @param {string} url StreamElements URL
- *
- * @returns {string} Streamer channel name
- */
-function getStreamerChannelName(url) {
-  const regex = /https?:\/\/(?:www\.)?streamelements\.com\/([^\/]+)/i;
-  const match = url.match(regex);
-
-  return match ? match[1] : null;
-}
-
-/**
  * @typedef ChannelInfoProfile
  * @type {object}
  * @property {string} title
  * @property {string} headerImage
- */
-
-/**
+ *
+ *
  * @typedef ChannelInfo
  * @type {object}
  * @property {ChannelInfoProfile} profile
@@ -107,9 +77,8 @@ function getStreamerChannelName(url) {
  * @property {string} displayName
  * @property {boolean} inactive
  * @property {boolean} isPartner
- */
-
-/**
+ *
+ *
  * @description
  * Function to get StreamElements channel info data
  *
@@ -137,9 +106,8 @@ async function getChannelInfo(channelName) {
  * @property {number} pointsAlltime
  * @property {number} watchtime
  * @property {number} rank
- */
-
-/**
+ *
+ *
  * @description
  * Function to get user points for the current channel
  *
@@ -344,16 +312,13 @@ function init() {
 function waitFor(selector, callback) {
   const element = document.querySelector(selector);
   if (element) {
-    console.log('element exists')
     callback(element);
     return;
   }
 
   const observer = new MutationObserver(() => {
     const element = document.querySelector(selector);
-     console.log('observer element')
     if (element) {
-      console.log('observed element found')
       observer.disconnect();
       callback(element);
     }
@@ -370,10 +335,8 @@ function waitFor(selector, callback) {
  */
 function onUrlChange(callback) {
   let oldHref = location.href;
-  console.log('oldHref', oldHref);
 
   const observer = new MutationObserver(() => {
-    console.log('location.href', location.href);
     if (location.href !== oldHref) {
       oldHref = location.href;
       callback(location.href);
@@ -381,49 +344,6 @@ function onUrlChange(callback) {
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
-}
-
-/**
- * @description
- * Get the time to receive points in milliseconds
- *
- * @param {string} text
- * @returns {number} Return the time on text in milleseconds
- */
-function extractTimeToMs() {
-  const text = document.querySelector(SE_EARN_POINTS_TIME).innerHTML;
-
-  const clean = text.replace(/<[^>]+>/g, "");
-
-  const match = clean.match(/every\s+(\d+)\s+(\w+)/i);
-  if (!match) return null;
-
-  const value = Number(match[1]);
-  const unit = match[2].toLowerCase();
-
-  let ms = 0;
-
-  switch (unit) {
-    case "second":
-    case "seconds":
-      ms = value * 1000;
-      break;
-
-    case "minute":
-    case "minutes":
-      ms = value * 60 * 1000;
-      break;
-
-    case "hour":
-    case "hours":
-      ms = value * 60 * 60 * 1000;
-      break;
-
-    default:
-      return null;
-  }
-
-  return ms;
 }
 
 /**
@@ -476,7 +396,9 @@ async function loadPoints() {
 
   userPoints.innerHTML = `<b>#${data.rank}</b> - ${username} - <b>${commafy( data.points )}</b>`;
 
-  setTimeout(async () => { void loadPoints(); }, extractTimeToMs() / 2);
+  const text = document.querySelector(SE_EARN_POINTS_TIME).innerHTML;
+
+  setTimeout(async () => { void loadPoints(); }, extractTimeToMs(text) / 2);
 }
 
 waitFor(SE_SIDEBAR, () => { loadPoints(); });
@@ -490,3 +412,12 @@ onUrlChange(async () => {
     void init();
   });
 });
+
+if (typeof module !== "undefined") {
+  module.exports = {
+    commafy,
+    getStreamerChannelName,
+    extractTimeToMs
+  };
+}
+
