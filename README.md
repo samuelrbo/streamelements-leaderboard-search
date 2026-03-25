@@ -89,3 +89,42 @@ docker compose -f docker-compose.e2e.yml up --build --exit-code-from e2e
 3. Active the developer mode
 4. Click to load without package
 5. Select the package folder
+
+## 💖 Support the Project
+
+If this extension has helped you or your community, consider supporting its continuous development. Every contribution helps keep the project updated and free!
+
+### 🌎 International (PayPal)
+For international supporters, you can donate via PayPal:
+
+[<img src="https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white" />](https://www.paypal.com/donate/?hosted_button_id=HPGPH82LXYNPN)
+
+---
+
+### 🦊 Crypto (MetaMask/Ethereum)
+If you prefer crypto, you can send any ERC-20 token to my wallet:
+
+**Bitcoin**
+
+```sh
+bc1qggez8sgat2nsd2vuha8pnlcsa8e2p2ewclqry4
+```
+
+**Ethereum**
+
+```sh
+0x695b6bDCBe29bdf35ca39818b0C44B757dC3Bc0e
+```
+
+**Solana**
+
+```sh
+GkE3BGcMMbmYizQsGyYBJtRTjpKqJ8NLWcupch3fM5cT
+```
+
+---
+
+### 🇧🇷 Brazil (Pix)
+You can support via **Pix**. Scan the QR Code below or use the copy-and-paste key:
+
+**b5ef8726-a567-40e2-b3ad-c49d2465c5ea**
