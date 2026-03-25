@@ -8,7 +8,7 @@ describe("Sidebar points loader", () => {
     await mockStreamElementsDOM(page);
     await mockStreamElementsAPI(page);
 
-    await page.addScriptTag({ path: "./extension/scripts/content.js" });
+    await page.addScriptTag({ path: "/app/extension/scripts/content.js" });
 
     await page.waitForSelector("#personal-points", { timeout: 5000 });
 

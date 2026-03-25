@@ -8,7 +8,7 @@ describe("Search functionality", () => {
     await mockStreamElementsDOM(page);
     await mockStreamElementsAPI(page);
 
-    await page.addScriptTag({ path: "./extension/scripts/content.js" });
+    await page.addScriptTag({ path: "/app/extension/scripts/content.js" });
 
     await page.waitForSelector("#search-container input");
 

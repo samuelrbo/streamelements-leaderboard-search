@@ -6,7 +6,7 @@ describe("Content script initialization", () => {
 
     await mockStreamElementsDOM(page);
 
-    await page.addScriptTag({ path: "./extension/scripts/content.js" });
+    await page.addScriptTag({ path: "/app/extension/scripts/content.js" });
 
     await page.waitForSelector("#search-container", { timeout: 5000 });
 
