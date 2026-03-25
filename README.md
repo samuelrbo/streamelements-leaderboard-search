@@ -24,38 +24,47 @@ The extension injects the `scripts/content.js` in the StremElements' leaderboard
 
 ```sh
 /
-├── docs/                       # Documentation files
-|   ├── CHANGELOG.md            # Changelog doc file
-|   └── CONTRIBUTING.md         # Contributing doc file
-├── extension/                  # Extension files
-|   ├── _locales/               # Language files
-|   |   ├── en/
-|   |       └── messages.json   # English i18n file
-|   |   ├── pr_BR/
-|   |       └── messages.json   # Brazilian Portuguese i18n file
-|      └── pt_PT/
-|           └── messages.json   # Portugal Portuguese i18n file
-|   ├── icons/                  # Icons
+├── docs/                         # Documentation folder
+|   ├── CHANGELOG.md              # Changelog doc file
+|   └── CONTRIBUTING.md           # Contributing doc file
+├── extension/                    # Extension files
+|   ├── _locales/                 # Language files
+|   |   ├── en/                   # English i18n folder
+|   |       └── messages.json     # English i18n file
+|   |   ├── pr_BR/                # Brazilian Portuguese i18n folder
+|   |       └── messages.json     # Brazilian Portuguese i18n file
+|       └── pt_PT/                # Portugal Portuguese i18n folder
+|           └── messages.json     # Portugal Portuguese i18n file
+|   ├── icons/                    # Icons
 |       ├── icon16.png
 |       ├── icon32.png
 |       ├── icon48.png
 |       ├── icon128.png
 |       └── icon256.png
 |   ├── scripts/
-|       ├── constants.js        # Extension constants
-|       ├── content.js          # Script injected in the StreamElemets page to execute the search
-|       └── utils.js            # Extension utils
-|   └── manifest.json           # Extension configuration
-├── docs/                       # Tests
-|   ├── CHANGELOG.md            # Changelog doc file
-|   └── CONTRIBUTING.md         # Contributing doc file
-├── .gitignore                  # Git ignore file
-├── build-extension.js          # Build extension zip file
-├── extension.zip               # Builded extension zip file
-├── LICENSE                     # GPLv3 License
-├── package-lock.json           # Package-lock file
-├── package.json                # Packge file
-└── README.md                   # This file
+|       ├── constants.js          # Extension constants
+|       ├── content.js            # Script injected in the StreamElemets page to execute the search
+|       └── utils.js              # Extension utils
+|   └── manifest.json             # Extension configuration
+├── tests/                        # Tests
+|   ├── e2e/                      # End-to-end tests folder
+|     ├── mocks/                  # End-to-end mocks
+|       ├── api.js                # API mock
+|       └── dom.js                # DOM mock
+|     ├── content.test.js         # Content test
+|     ├── search.test.js          # Search test
+|     └── sidebar.test.js         # Sidebar points test
+|   ├── unit/                     # Unit tests
+|     └── utils.test.js           # Project utils functions test
+|   └── puppeteer.environment.js  # Contributing doc file
+├── .gitignore                    # Git ignore file
+├── build-extension.js            # Build extension zip file
+├── extension.zip                 # Builded extension zip file
+├── jest.config.js                # Test/Jest config file
+├── LICENSE                       # GPLv3 License
+├── package-lock.json             # Package-lock file
+├── package.json                  # Packge file
+└── README.md                     # This file
 ```
 
 
