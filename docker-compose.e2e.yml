@@ -5,6 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.e2e
+    shm_size: "2gb"
+    ipc: host
+    privileged: true
     volumes:
       - .:/app
-    shm_size: "2gb"
+      - /app/node_modules
+    environment:
+      - NODE_ENV=test
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
