@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/samuelrbo/streamelements-leaderboard-search#readme",
   "devDependencies": {
+    "dotenv": "^17.3.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "jest-environment-node": "^30.3.0",
