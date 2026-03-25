@@ -15,7 +15,9 @@ This project is licensed under **GPLv3**.
 ### Added
 - Update folder organization
 - Build plugin command
+- Update project structure
 - Tests with Puppeteer
+- Include Docker to execute e2e tests
 - Update documentation
 
 ## [1.1.0] - 2026-03-23
