@@ -4,14 +4,20 @@ async function mockStreamElementsAPI(page) {
   page.on("request", req => {
     const url = req.url();
 
+    const headers = {
+      "access-control-allow-origin": "*",
+      "access-control-allow-headers": "*",
+      "content-type": "application/json"
+    };
+
     if (url.includes("/channels/")) {
       return req.respond({
         status: 200,
-        contentType: "application/json",
+        headers,
         body: JSON.stringify({
-          _id: "123",
-          username: "samuelrbo",
-          displayName: "SamuelRBO"
+          _id: "5ebec5ee2c63d7c1cf008db7",
+          username: "samzuka",
+          displayName: "Samzuka"
         })
       });
     }
@@ -19,9 +25,9 @@ async function mockStreamElementsAPI(page) {
     if (url.includes("/points/")) {
       return req.respond({
         status: 200,
-        contentType: "application/json",
+        headers,
         body: JSON.stringify({
-          username: "samuelrbo",
+          username: "samzuka",
           rank: 42,
           points: 12345
         })

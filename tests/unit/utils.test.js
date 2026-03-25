@@ -11,8 +11,8 @@ describe("Utility functions", () => {
   });
 
   test("getStreamerChannelName extracts channel name", () => {
-    expect(getStreamerChannelName("https://streamelements.com/samuelrbo"))
-      .toBe("samuelrbo");
+    expect(getStreamerChannelName("https://streamelements.com/samzuka"))
+      .toBe("samzuka");
   });
 
   test("extractTimeToMs parses time correctly", () => {

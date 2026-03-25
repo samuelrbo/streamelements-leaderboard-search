@@ -6,16 +6,15 @@ class PuppeteerEnvironment extends NodeEnvironment {
     await super.setup();
 
     this.global.browser = await puppeteer.launch({
-      headless: false, // headful (required for extensions)
-      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+      headless: false,
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
-        "--disable-gpu",
         "--disable-dev-shm-usage",
-        "--disable-background-timer-throttling",
-        "--disable-backgrounding-occluded-windows",
-        "--disable-renderer-backgrounding",
+        "--disable-gpu",
+        "--no-zygote",
+        "--single-process",
         "--disable-extensions-except=/app/extension",
         "--load-extension=/app/extension"
       ]
