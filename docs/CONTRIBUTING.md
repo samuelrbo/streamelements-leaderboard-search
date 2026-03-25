@@ -29,7 +29,7 @@ npm run test:unit
 This requires Docker installed to ensure the environment matches the production CI.
 
 ```sh
-docker-compose up --build --exit-code-from e2e
+docker compose -f docker-compose.e2e.yml up --build --exit-code-from e2e
 ```
 
 ## 🚀 Release Process (Version Bump)
