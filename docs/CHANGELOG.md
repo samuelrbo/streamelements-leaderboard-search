@@ -7,7 +7,12 @@ This project is licensed under **GPLv3**.
 ---
 
 ## [Unreleased]
--
+
+---
+
+## [1.1.2] - 2026-03-25
+### Added
+- Privacy Policy `PRIVACY.md`
 
 ---
 
