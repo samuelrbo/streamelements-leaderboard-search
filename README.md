@@ -31,7 +31,7 @@ This project uses a robust testing infrastructure to ensure that UI changes in S
 To ensure parity with the CI/CD environment, we use Docker to run E2E tests with Puppeteer:
 
 ```sh
-docker compose -f docker-compose.e2e.yml up --build --exit-code-from e2
+docker compose -f docker-compose.e2e.yml up --build --exit-code-from e2e
 ```
 
 ## Project Structure
