@@ -11,6 +11,28 @@ This project is licensed under **GPLv3**.
 
 ---
 
+## [1.1.1] - 2026-03-24
+### Added
+- Update folder organization
+- Build plugin command
+- Tests with Puppeteer
+- Update documentation
+
+## [1.1.0] - 2026-03-23
+### Added
+- Update plugin version
+- onUrlChange
+- New query to check the leaderboard table
+- Logged user points details on sidebar
+  - Position
+  - Usernam
+  - Points (Formatted)
+
+### Removed
+- Required permissions for chrome plugin on:
+  - tabs
+  - <all_urls>
+
 ## [1.0.0] — 2026-03-21
 ### Added
 - Initial functional release of the extension.
