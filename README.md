@@ -12,13 +12,27 @@
 
 ---
 
-After the update on the StreamElements UI, was removed the search from the leaderboard interface.
+After the update on the StreamElements UI, the search functionality was removed from the leaderboard interface.
 
-This plugin add an search input to Streamer leaderboard page using the StreamElements public API.
+This extension adds a search input to the Streamer leaderboard page using the StreamElements public API, allowing users to find rankings quickly.
 
-## How it works
+## ✨ Features
 
-The extension injects the `scripts/content.js` in the StremElements' leaderboard page.
+- **Real-time Search:** Filter any user in the leaderboard instantly.
+- **Sidebar Integration:** View your personal rank, username, and formatted points in a fixed sidebar card.
+- **Auto-Update:** Personal points in the sidebar refresh automatically based on the channel's loyalty settings.
+
+## 🧪 Testing & Quality
+
+This project uses a robust testing infrastructure to ensure that UI changes in StreamElements don't break the extension.
+
+### Running Tests (Docker)
+
+To ensure parity with the CI/CD environment, we use Docker to run E2E tests with Puppeteer:
+
+```sh
+docker-compose up --build --exit-code-from e2e
+```
 
 ## Project Structure
 

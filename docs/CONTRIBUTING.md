@@ -1,76 +1,72 @@
 # Contributing to StreamElements Leaderboard Search
 
-Thank you for your interest in contributing to **StreamElements Leaderboard Search**!
-This document explains how you can help improve the project, report issues, and submit changes.
+Thank you for your interest in contributing! This project is licensed under **GPLv3**.
 
 ## 🧱 How to Contribute
 
-There are several ways to contribute:
+- **Bug Reports:** Open an issue describing the steps to reproduce the error.
+- **Features:** Suggest new ideas via issues before starting to code.
+- **Code:** Submit Pull Requests from a `feature/` or `fix/` branch.
 
-- Reporting bugs
-- Suggesting new features
-- Improving documentation
-- Submitting pull requests with fixes or enhancements
-- Reviewing contributions from other developers
+## 🔧 Local Development & Testing
 
-## 🐛 Reporting Bugs
+Before submitting a Pull Request, you **must** ensure all tests pass.
 
-If you find a bug:
+### 1. Setup
 
-1. Check if an issue already exists.
-2. If not, open a new issue and include:
-   - A clear description of the problem
-   - Steps to reproduce
-   - Expected behavior
-   - Screenshots or logs (if applicable)
-   - Chrome version and operating system
+```sh
+npm install
+```
 
----
+### 2. Run Unit Tests
 
-## 💡 Suggesting Features
+```sh
+npm run test:unit
+```
 
-Feature suggestions are welcome.
-When opening a feature request:
+### 3. Run E2E Tests (Interface)
 
-- Explain the motivation behind the idea
-- Describe the benefit for users
-- Provide examples or use cases when possible
+This requires Docker installed to ensure the environment matches the production CI.
 
----
+```sh
+docker-compose up --build --exit-code-from e2e
+```
 
-## 🔧 Submitting Pull Requests
+## 🚀 Release Process (Version Bump)
 
-Before submitting a PR:
+To maintain consistency between the `package.json`, the extension's `manifest.json`, and the `CHANGELOG.md`, follow these steps when preparing a new version:
 
-1. Fork the repository.
-2. Create a descriptive branch: `git checkout -b feature/your-feature-name`
-3. Follow these guidelines:
-   - Keep the code clean and well‑commented
-   - Use small, descriptive commits
-   - Avoid committing unnecessary files (builds, caches, etc.)
-4. Ensure the code works as intended.
-5. Open the PR with:
-   - A clear explanation of the changes
-   - The reason for the modification
-   - Screenshots or examples if relevant
+### 1. Update the version in the files
 
----
+Use the automation script to synchronize the version across all configuration files:
 
-## 🧪 Coding Standards
+```sh
+# Example for version 1.1.2
+npm run bump 1.1.2
+```
 
-- Use modern JavaScript (ES6+)
-- Avoid unnecessary dependencies
-- Keep the code simple and readable
-- Use clear and consistent naming conventions
+### 2. Update the Changelog
 
----
+Make sure the changes in `## [Unreleased]` have been moved to the new section of the corresponding version with the current date in the `docs/CHANGELOG.md` file.
 
-## 📜 License
+### 3. Create Tag and Push
 
-By contributing, you agree that your contributions will be licensed under the **GPLv3**, the same license as the project.
+Deployment (ZIP generation and GitHub Release) is automated via Tags.
 
----
+```sh
+git add .
+git commit -m "chore: release v1.1.2"
+git tag v1.1.2
+git push origin main --tags
+```
+
+## 📜 Pull Request Guidelines
+
+1. Keep code clean and follow ES6+ standards.
+2. Use descriptive commit messages.
+3. Update the `CHANGELOG.md` under the `[Unreleased]` section.
+4. If you add a new feature, include a corresponding test case in `tests/`.
 
 ## 🤝 Thank You
 
-Your contributions help make this project better and more useful for the community.
+Your contributions help streamers and viewers navigate their communities better!

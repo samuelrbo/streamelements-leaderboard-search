@@ -7,11 +7,11 @@ This project is licensed under **GPLv3**.
 ---
 
 ## [Unreleased]
-- Planned improvements and upcoming changes will be listed here.
+-
 
 ---
 
-## [1.1.1] - 2026-03-24
+## [1.1.1] - 2026-03-25
 ### Added
 - Update folder organization
 - Build plugin command
@@ -19,6 +19,8 @@ This project is licensed under **GPLv3**.
 - Tests with Puppeteer
 - Include Docker to execute e2e tests
 - Update documentation
+- GitHub Actions pipeline for automated testing.
+- Automated ZIP artifact generation on Tag push.
 
 ## [1.1.0] - 2026-03-23
 ### Added
