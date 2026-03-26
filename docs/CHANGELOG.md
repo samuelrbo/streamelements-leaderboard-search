@@ -8,6 +8,10 @@ This project is licensed under **GPLv3**.
 
 ## [Unreleased]
 
+---
+
+## [1.1.4] - 2026-03-26
+
 ### Fix
 
 - Github pipeline
