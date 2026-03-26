@@ -17,8 +17,8 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm ci
@@ -31,7 +31,7 @@ jobs:
           docker compose -f docker-compose.e2e.yml up --build --exit-code-from e2e
 
       - name: Build Extension
-        run: npm run build:extension
+        run: npm run build
 
       - name: Create Extension Zip
         run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: "main"
-          pr_title: "Release: Merging develop into main"
-          pr_body: "Automated PR: All tests passed successfully."
+          destination_branch: 'main'
+          pr_title: 'Release: Merging develop into main'
+          pr_body: 'Automated PR: All tests passed successfully.'
           github_token: ${{ secrets.GITHUB_TOKEN }}

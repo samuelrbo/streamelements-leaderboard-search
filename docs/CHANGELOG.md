@@ -10,14 +10,31 @@ This project is licensed under **GPLv3**.
 
 ---
 
-## [1.1.2] - 2026-03-25
+## [1.1.3] - 2026-03-26
+
+### Fix
+
+- Exntension build ZIP
+- Build ZIP command
+
 ### Added
+
+- Lint
+- Prettier configuration
+- VSCode configuration and extensions recommendations
+
+## [1.1.2] - 2026-03-25
+
+### Added
+
 - Privacy Policy `PRIVACY.md`
 
 ---
 
 ## [1.1.1] - 2026-03-25
+
 ### Added
+
 - Update folder organization
 - Build plugin command
 - Update project structure
@@ -28,7 +45,9 @@ This project is licensed under **GPLv3**.
 - Automated ZIP artifact generation on Tag push.
 
 ## [1.1.0] - 2026-03-23
+
 ### Added
+
 - Update plugin version
 - onUrlChange
 - New query to check the leaderboard table
@@ -38,12 +57,15 @@ This project is licensed under **GPLv3**.
   - Points (Formatted)
 
 ### Removed
+
 - Required permissions for chrome plugin on:
   - tabs
   - <all_urls>
 
 ## [1.0.0] — 2026-03-21
+
 ### Added
+
 - Initial functional release of the extension.
 - Automatic extraction of the streamer identifier from the StreamElements URL.
 - Support for dynamic pages using `MutationObserver`.
@@ -75,5 +97,6 @@ This project is licensed under **GPLv3**.
 ---
 
 ## Project History
+
 The project was created by **Samuel Oliveira <samuelrbo@gmail.com>**
 to simplify the process of querying public StreamElements leaderboards.
