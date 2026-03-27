@@ -6,7 +6,7 @@ const sourceDir = path.join(__dirname, 'extension');
 const outPath = path.join(__dirname, 'extension.zip');
 
 const output = fs.createWriteStream(outPath);
-const archive = archiver('zip', { zlib: { level: 0 } });
+const archive = archiver('zip', { zlib: { level: 9 } });
 
 output.on('close', () => {
   console.log(

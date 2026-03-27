@@ -39,10 +39,19 @@ jobs:
 
       - name: Create Extension Zip
         run: |
-          cd extension && zip -r ../streamelements-leaderboard.zip . -x "*.git*"
-          # Se for uma tag, cria um zip com o nome da versão também
+          cd extension
+          zip -r ../streamelements-leaderboard.zip ./* -x "*.git*"
+          cd ..
           if [[ "${{ github.ref }}" == refs/tags/* ]]; then
-            cp ../streamelements-leaderboard.zip ../streamelements-search-${{ github.ref_name }}.zip
+            cp streamelements-leaderboard.zip streamelements-search-${{ github.ref_name }}.zip
+          fi
+
+      - name: Verify ZIP Structure
+        run: |
+          if [[ "${{ github.ref }}" == refs/tags/* ]]; then
+            cp streamelements-leaderboard.zip streamelements-search-${{ github.ref_name }}.zip
+          else
+            unzip -l streamelements-leaderboard.zip
           fi
 
       - name: Upload Artifact (Para conferência manual se necessário)
