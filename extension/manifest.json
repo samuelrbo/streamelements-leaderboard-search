@@ -3,23 +3,23 @@
   "description": "__MSG_extDescription__",
   "version": "1.1.4",
   "manifest_version": 3,
+  "options_ui": {
+    "page": "pages/options/index.html",
+    "open_in_tab": true
+  },
   "default_locale": "en",
   "homepage_url": "https://github.com/samuelrbo/streamelements-leaderboard-search",
   "content_scripts": [
     {
-      "matches": [
-        "https://streamelements.com/*"
-      ],
-      "js": [
-        "scripts/constants.js",
-        "scripts/utils.js",
-        "scripts/content.js"
-      ]
+      "matches": ["https://streamelements.com/*"],
+      "js": ["scripts/constants.js", "scripts/utils.js", "scripts/content.js"]
     }
   ],
-  "host_permissions": [
-    "https://streamelements.com/*"
-  ],
+  "host_permissions": ["https://streamelements.com/*"],
+  "permissions": ["storage", "notifications", "alarms"],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
