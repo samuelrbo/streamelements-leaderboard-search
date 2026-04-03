@@ -1,6 +1,6 @@
 {
   "name": "streamelements-leaderboard-search",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Chrome extension that adds leaderboard search and personal points display to StreamElements.",
   "main": "index.js",
   "scripts": {
