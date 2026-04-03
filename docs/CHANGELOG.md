@@ -10,14 +10,19 @@ This project is licensed under **GPLv3**.
 
 ### Added
 
-- Display StreamElements points in the extension's pop-up window
-- Include screenshots for the plugin's publishing areas in the Chrome extension store
+- Plugin options
+- Auto update points in plugin option page
+- Plugin sidebar
 
 ### Fixed
 
 - Colors for the dark/light mode.
 - Typo
 - Code Lint
+
+# Removed
+
+- Unused labels
 
 ---
 
