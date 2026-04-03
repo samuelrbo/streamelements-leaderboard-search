@@ -17,7 +17,9 @@
   "howToGetTwitchToken": {
     "message": "Gere um <b>Token de Escopo Personalizado</b> em <a href='https://twitchtokengenerator.com/' target='_blank'>twitchtokengenerator.com</a>"
   },
-  "labelTrackedStreamers": { "message": "Streamers Monitorados" },
+  "labelTrackedStreamers": {
+    "message": "Streamers Monitorados <span id='totalStreamers'></span>"
+  },
   "placeholderAddStreamer": { "message": "Streamer para adicionar" },
   "btnAdd": { "message": "Adicionar" },
   "btnRemove": { "message": "Remover" },
