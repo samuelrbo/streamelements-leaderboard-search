@@ -60,23 +60,7 @@ jobs:
           name: extension-package
           path: streamelements-leaderboard.zip
 
-  # JOB 2: Open PR - Runs in develop push
-  open-pr:
-    needs: test-and-build
-    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-    steps:
-      - name: Create Pull Request
-        uses: repo-sync/pull-request@v2
-        with:
-          destination_branch: 'main'
-          pr_title: '🚀 Release Candidate: ${{ github.sha }}'
-          pr_body: 'Automated PR: All tests and Docker E2E passed.'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-  # JOB 3: Publish Release - Run in tag v
+  # JOB 2: Publish Release - Run in tag v
   publish-release:
     needs: test-and-build
     if: startsWith(github.ref, 'refs/tags/v')

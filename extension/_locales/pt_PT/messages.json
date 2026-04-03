@@ -1,23 +1,24 @@
 {
-  "extName": {
-    "message": "StreamElements Leaderboard Search"
-  },
+  "extName": { "message": "StreamElements Leaderboard Search" },
   "extDescription": {
-    "message": "Campo de busca para o ranking do StreamElements."
+    "message": "Campo de pesquisa para o ranking do StreamElements."
   },
-  "searchPlaceholder": {
-    "message": "Buscar por usuário"
+  "searchPlaceholder": { "message": "Pesquisar por utilizador" },
+  "loadingResult": { "message": "A carregar..." },
+  "emptyResult": { "message": "Sem resultado para pesquisa" },
+  "settingsHeader": { "message": "Definições" },
+  "statusSaved": { "message": "Definições guardadas com sucesso!" },
+  "labelTwitchName": { "message": "O Teu Nome no Twitch" },
+  "placeholderTwitchName": { "message": "Ex: samzuka" },
+  "labelTrackedStreamers": {
+    "message": "Streamers Monitorizados <span id='totalStreamers'></span>"
   },
-  "loadingResult": {
-    "message": "Carregando..."
-  },
-  "emptyResult": {
-    "message": "Sem resultado para busca"
-  },
-  "searchError": {
-    "message": "Erro na busca:"
-  },
-  "abortSearch": {
-    "message": "Busca anterior abortada:"
-  }
+  "placeholderAddStreamer": { "message": "Streamer para adicionar" },
+  "btnAdd": { "message": "Adicionar" },
+  "btnRemove": { "message": "Remover" },
+  "thStreamer": { "message": "STREAMER" },
+  "thAction": { "message": "AÇÃO" },
+  "btnSave": { "message": "Guardar Definições" },
+  "saveMessage": { "message": "Definições guardadas com sucesso!" },
+  "errorLimitReached": { "message": "Limite de 5 streamers atingido!" }
 }

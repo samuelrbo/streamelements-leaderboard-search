@@ -19,12 +19,12 @@
    *
    * @returns {string} Return a commafy number
    */
-  function commafy( num ) {
-      let str = num.toString().split('.');
-      if (str[0].length >= 4) {
-        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-      }
-      return str.join(',');
+  function commafy(num) {
+    let str = num.toString().split('.');
+    if (str[0].length >= 4) {
+      str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    return str.join(',');
   }
 
   /**
@@ -50,7 +50,7 @@
    * @returns {number} Return the time on text in milleseconds
    */
   function extractTimeToMs(text) {
-    const clean = text.replace(/<[^>]+>/g, "");
+    const clean = text.replace(/<[^>]+>/g, '');
 
     const match = clean.match(/every\s+(\d+)\s+(\w+)/i);
     if (!match) return null;
@@ -61,18 +61,18 @@
     let ms = 0;
 
     switch (unit) {
-      case "second":
-      case "seconds":
+      case 'second':
+      case 'seconds':
         ms = value * 1000;
         break;
 
-      case "minute":
-      case "minutes":
+      case 'minute':
+      case 'minutes':
         ms = value * 60 * 1000;
         break;
 
-      case "hour":
-      case "hours":
+      case 'hour':
+      case 'hours':
         ms = value * 60 * 60 * 1000;
         break;
 
@@ -84,12 +84,12 @@
   }
 
   // Chrome: expose globally
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     window.utils = { commafy, getStreamerChannelName, extractTimeToMs };
   }
 
   // Jest: export as module
-  if (typeof module !== "undefined") {
+  if (typeof module !== 'undefined') {
     module.exports = { commafy, getStreamerChannelName, extractTimeToMs };
   }
 })();

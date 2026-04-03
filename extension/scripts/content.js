@@ -1,14 +1,14 @@
-if (typeof window === "undefined") {
+if (typeof window === 'undefined') {
   global.window = {};
   global.document = {
-    querySelector: () => null
+    querySelector: () => null,
   };
 }
 
 const { commafy, getStreamerChannelName, extractTimeToMs } =
-  typeof window !== "undefined" && window.utils
+  typeof window !== 'undefined' && window.utils
     ? window.utils
-    : require("./utils.js");
+    : require('./utils.js');
 
 const {
   SE_API,
@@ -19,9 +19,9 @@ const {
   SE_USERNAME,
   SE_EARN_POINTS_TIME,
 } =
-  typeof window !== "undefined" && window.constants
+  typeof window !== 'undefined' && window.constants
     ? window.constants
-    : require("./constants.js");
+    : require('./constants.js');
 
 let debounceTimer;
 let abortController;
@@ -41,7 +41,7 @@ function element(type, attributes = null, clazz = []) {
     for (attr in attributes) {
       if (attr === 'style') {
         for (style in attributes[attr]) {
-          el[attr][style] = attributes[attr][style]
+          el[attr][style] = attributes[attr][style];
         }
       } else {
         el[attr] = attributes[attr];
@@ -50,7 +50,7 @@ function element(type, attributes = null, clazz = []) {
   }
 
   if (clazz && Array.isArray(clazz) && clazz.length > 0) {
-    clazz.forEach(c => el.classList.add(c));
+    clazz.forEach((c) => el.classList.add(c));
   }
 
   return el;
@@ -88,11 +88,13 @@ function element(type, attributes = null, clazz = []) {
  */
 async function getChannelInfo(channelName) {
   try {
-    const response = await fetch(`${SE_API}/channels/${channelName}`).catch(e => {});
+    const response = await fetch(`${SE_API}/channels/${channelName}`).catch(
+      (e) => {}
+    );
     const data = await response.json();
 
     return data;
-  } catch(err) {
+  } catch (err) {
     return false;
   }
 }
@@ -116,16 +118,17 @@ async function getChannelInfo(channelName) {
  * @returns {Promise<{UserPoints|false}>}
  */
 async function getUserPoints(channelId, username) {
-   try {
+  try {
     abortController = new AbortController();
     const { signal } = abortController;
 
-
-    const response = await fetch(`${SE_API}/points/${channelId}/${username}`, { signal }).catch(e => {});
+    const response = await fetch(`${SE_API}/points/${channelId}/${username}`, {
+      signal,
+    }).catch((e) => {});
     const data = await response.json();
 
     return data;
-  } catch(err) {
+  } catch (err) {
     return false;
   }
 }
@@ -145,19 +148,22 @@ async function search(username) {
   }
 
   try {
-    const cellWaiting = element('td', {
-      colSpan: 3
-    }, [
-      'px-5',
-      'py-3.5',
-      'text-sm',
-      'text-muted-foreground',
-      'text-center'
-    ]);
+    const cellWaiting = element(
+      'td',
+      {
+        colSpan: 3,
+        style: {
+          color: '#FFFFFF',
+        },
+      },
+      ['px-5', 'py-3.5', 'text-sm', 'text-muted-foreground', 'text-center']
+    );
     cellWaiting.innerHTML = chrome.i18n.getMessage('loadingResult');
     rowResult.append(cellWaiting);
 
-    const channelInfo = await getChannelInfo(getStreamerChannelName(location.href));
+    const channelInfo = await getChannelInfo(
+      getStreamerChannelName(location.href)
+    );
 
     if (!channelInfo) {
       return;
@@ -171,15 +177,16 @@ async function search(username) {
 
     if (!data.username) {
       rowResult.innerHTML = '';
-      const cellNoResult = element('td', {
-        colSpan: 3
-      }, [
-        'px-5',
-        'py-3.5',
-        'text-sm',
-        'text-muted-foreground',
-        'text-center'
-      ]);
+      const cellNoResult = element(
+        'td',
+        {
+          colSpan: 3,
+          style: {
+            color: '#FFFFFF',
+          },
+        },
+        ['px-5', 'py-3.5', 'text-sm', 'text-muted-foreground', 'text-center']
+      );
       cellNoResult.innerHTML = chrome.i18n.getMessage('emptyResult');
       rowResult.append(cellNoResult);
       return;
@@ -193,46 +200,57 @@ async function search(username) {
       'text-sm',
       'w-20',
     ]);
-    const spanPosition = element('span', null, [
-      'text-muted-foreground'
-    ]);
-    spanPosition.innerHTML = `#${data.rank}`
+    const spanPosition = element(
+      'span',
+      {
+        style: {
+          color: '#FFFFFF',
+        },
+      },
+      ['text-muted-foreground']
+    );
+    spanPosition.innerHTML = `#${data.rank}`;
     cellPosition.append(spanPosition);
     rowResult.append(cellPosition);
 
-    const cellUsername = element('td', null, [
-      'px-5',
-      'py-3.5',
-      'text-sm',
-      'text-foreground',
-    ]);
+    const cellUsername = element(
+      'td',
+      {
+        style: {
+          color: '#FFFFFF',
+        },
+      },
+      ['px-5', 'py-3.5', 'text-sm', 'text-foreground']
+    );
     const spanUsername = element('span', null, [
       'inline-flex',
       'items-center',
-      'gap-2'
+      'gap-2',
     ]);
     spanUsername.innerHTML = data.username;
     cellUsername.append(spanUsername);
     rowResult.append(cellUsername);
 
-    const cellPoints = element('td', null, [
-      'px-5',
-      'py-3.5',
-      'text-sm',
-      'text-right',
-      'tabular-nums',
-      'text-foreground',
-    ]);
-    cellPoints.innerHTML = commafy( data.points );
+    const cellPoints = element(
+      'td',
+      {
+        style: {
+          color: '#FFFFFF',
+        },
+      },
+      [
+        'px-5',
+        'py-3.5',
+        'text-sm',
+        'text-right',
+        'tabular-nums',
+        'text-foreground',
+      ]
+    );
+    cellPoints.innerHTML = commafy(data.points);
     rowResult.append(cellPoints);
   } catch (error) {
     rowResult.innerHTML = '';
-
-    // if (error.name === 'AbortError') {
-    //   console.log(chrome.i18n.getMessage('abortSearch'), query);
-    // } else {
-    //   console.error(chrome.i18n.getMessage('searchError'), error);
-    // }
   }
 }
 
@@ -282,23 +300,29 @@ function init() {
   const tableResultBody = element('tbody');
   tableResult.append(tableResultBody);
 
-  const rowResult = element('tr', {
-    id: SE_RESULT_ID,
-    style: {
-      backgroundColor: '#392a46',
+  const rowResult = element(
+    'tr',
+    {
+      id: SE_RESULT_ID,
+      style: {
+        backgroundColor: '#392a46',
+      },
     },
-  }, [
-    'border-b',
-    'border-border',
-    'last:border-0',
-    'transition-colors',
-    'bg-muted',
-  ]);
+    [
+      'border-b',
+      'border-border',
+      'last:border-0',
+      'transition-colors',
+      'bg-muted',
+    ]
+  );
   tableResultBody.append(rowResult);
 
   container.append(resultContainer);
 
-  const dataContainer = document.querySelector(SE_CONTAINER).parentNode.parentNode.parentNode.parentNode;
+  const dataContainer =
+    document.querySelector(SE_CONTAINER).parentNode.parentNode.parentNode
+      .parentNode;
   dataContainer.insertBefore(container, dataContainer.childNodes[1]);
 }
 
@@ -351,7 +375,9 @@ function onUrlChange(callback) {
  * Load the current user points and set in the seidebar
  */
 async function loadPoints() {
-  const channelInfo = await getChannelInfo(getStreamerChannelName(location.href));
+  const channelInfo = await getChannelInfo(
+    getStreamerChannelName(location.href)
+  );
 
   if (!channelInfo) {
     return;
@@ -359,10 +385,7 @@ async function loadPoints() {
 
   const username = document.querySelector(SE_USERNAME).innerHTML;
 
-  const data = await getUserPoints(
-    channelInfo._id,
-    username
-  );
+  const data = await getUserPoints(channelInfo._id, username);
 
   let userPoints = document.getElementById('personal-points');
 
@@ -382,26 +405,34 @@ async function loadPoints() {
         padding: '5px 10px',
         color: '#FFFFFF',
         backgroundColor: '#7B00FF',
-      }
+      },
     });
 
     userPointsContainer.append(userPoints);
 
-    document.querySelector(SE_SIDEBAR)
+    document
+      .querySelector(SE_SIDEBAR)
       .insertBefore(
         userPointsContainer,
         document.querySelector(SE_SIDEBAR_DETAILS)
       );
   }
 
-  userPoints.innerHTML = `<b>#${data.rank}</b> - ${username} - <b>${commafy( data.points )}</b>`;
+  userPoints.innerHTML = `<b>#${data.rank}</b> - ${username} - <b>${commafy(data.points)}</b>`;
 
   const text = document.querySelector(SE_EARN_POINTS_TIME).innerHTML;
 
-  setTimeout(async () => { void loadPoints(); }, extractTimeToMs(text) / 2);
+  setTimeout(
+    async () => {
+      void loadPoints();
+    },
+    extractTimeToMs(text) / 2
+  );
 }
 
-waitFor(SE_SIDEBAR, () => { loadPoints(); });
+waitFor(SE_SIDEBAR, () => {
+  loadPoints();
+});
 
 waitFor(SE_CONTAINER, () => {
   void init();
@@ -413,11 +444,10 @@ onUrlChange(async () => {
   });
 });
 
-if (typeof module !== "undefined") {
+if (typeof module !== 'undefined') {
   module.exports = {
     commafy,
     getStreamerChannelName,
-    extractTimeToMs
+    extractTimeToMs,
   };
 }
-
