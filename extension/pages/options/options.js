@@ -2,7 +2,7 @@ const MAX_STREAMERS = 5;
 
 const twitchNameInput = document.getElementById('twitch-name');
 const newStreamerInput = document.getElementById('new-streamer');
-const addBtn = document.querySelector('.btn-primary'); // O botão de adicionar
+const addBtn = document.querySelector('.btn-primary');
 const saveBtn = document.getElementById('save');
 const statusMsg = document.getElementById('status');
 const tableBody = document.querySelector('table tbody');
@@ -26,6 +26,8 @@ function initI18n() {
     );
     if (message) el.setAttribute('placeholder', message);
   });
+
+  addBtn.title = chrome.i18n.getMessage('btnAdd');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
