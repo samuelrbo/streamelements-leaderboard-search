@@ -58,7 +58,7 @@
         margin-bottom: 15px;
         border-radius: var(--radius);
         text-align: center;
-        display: none; /* Ativado via JS */
+        visibility: hidden; /* Ativado via JS */
         background: #e8daff;
         color: var(--primary);
         font-weight: 600;
@@ -232,26 +232,6 @@
       <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px" />
 
       <div class="section">
-        <label>Twitch Access Token</label>
-        <div class="input-group">
-          <input
-            type="password"
-            id="twitch-token"
-            data-i18n-placeholder="twitchToken"
-          />
-          <a
-            href="https://twitchtokengenerator.com/"
-            target="_blank"
-            class="btn-help"
-            >?</a
-          >
-        </div>
-        <small data-i18n="howToGetTwitchToken"></small>
-      </div>
-
-      <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px" />
-
-      <div class="section">
         <label data-i18n="labelTrackedStreamers"></label>
         <div class="input-group">
           <input
@@ -273,7 +253,6 @@
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
-            <span data-i18n="btnAdd"></span>
           </button>
         </div>
       </div>

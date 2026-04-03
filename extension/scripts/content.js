@@ -251,12 +251,6 @@ async function search(username) {
     rowResult.append(cellPoints);
   } catch (error) {
     rowResult.innerHTML = '';
-
-    // if (error.name === 'AbortError') {
-    //   console.log(chrome.i18n.getMessage('abortSearch'), query);
-    // } else {
-    //   console.error(chrome.i18n.getMessage('searchError'), error);
-    // }
   }
 }
 
