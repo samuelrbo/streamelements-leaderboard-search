@@ -8,11 +8,27 @@ This project is licensed under **GPLv3**.
 
 ## [Unreleased]
 
+### Added
+
+- Plugin options
+- Auto update points in plugin option page
+- Plugin sidebar
+
+### Fixed
+
+- Colors for the dark/light mode.
+- Typo
+- Code Lint
+
+# Removed
+
+- Unused labels
+
 ---
 
 ## [1.1.4] - 2026-03-26
 
-### Fix
+### Fixed
 
 - Github pipeline
 
@@ -20,7 +36,7 @@ This project is licensed under **GPLv3**.
 
 ## [1.1.3] - 2026-03-26
 
-### Fix
+### Fixed
 
 - Exntension build ZIP
 - Build ZIP command

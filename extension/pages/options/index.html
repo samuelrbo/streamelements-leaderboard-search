@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuration - StreamElements Leaderboard Search</title>
+    <style>
+      :root {
+        --primary: #7b00ff;
+        --dark: #392a46;
+        --bg: #f4f2f7;
+        --white: #ffffff;
+        --danger: #ff4d4d;
+        --success: #00c853;
+        --radius: 8px;
+        --shadow: 0 4px 12px rgba(57, 42, 70, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--dark);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        min-width: 400px;
+      }
+
+      .container {
+        background: var(--white);
+        width: 100%;
+        max-width: 450px;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary);
+      }
+
+      /* Mensagem de Status */
+      #status {
+        font-size: 0.9rem;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: var(--radius);
+        text-align: center;
+        visibility: hidden; /* Ativado via JS */
+        background: #e8daff;
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .section {
+        margin-bottom: 24px;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6a5a75;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 8px;
+      }
+
+      input[type='text'],
+      input[type='password'] {
+        flex: 1;
+        padding: 10px 14px;
+        border: 2px solid #e1e1e1;
+        border-radius: var(--radius);
+        outline: none;
+        transition: border-color 0.2s;
+        font-size: 1rem;
+      }
+
+      input[type='text']:focus,
+      input[type='password'] {
+        border-color: var(--primary);
+      }
+
+      /* Botões */
+      button {
+        cursor: pointer;
+        border: none;
+        border-radius: var(--radius);
+        font-weight: 600;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        padding: 10px 20px;
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+      }
+
+      .btn-save {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+        background-color: var(--dark);
+        color: white;
+        margin-top: 10px;
+      }
+
+      .btn-save:hover {
+        background-color: #2a1f34;
+      }
+
+      .btn-remove {
+        background: transparent;
+        color: var(--danger);
+        padding: 5px;
+        display: inline-flex;
+        width: auto;
+        margin-left: auto;
+      }
+
+      .btn-remove:hover {
+        background: #fff0f0;
+      }
+
+      /* Tabela / Lista */
+      .table-container {
+        margin-top: 20px;
+        border: 1px solid #eee;
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+      }
+
+      th {
+        background: #fafafa;
+        text-align: left;
+        padding: 12px;
+        font-size: 0.8rem;
+        color: #999;
+      }
+
+      td {
+        padding: 12px;
+        border-top: 1px solid #eee;
+        font-size: 0.95rem;
+      }
+
+      th:last-child,
+      td:last-child {
+        text-align: right;
+        padding-right: 16px;
+      }
+
+      .td-action {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        border-top: 1px solid #eee;
+        height: 100%;
+      }
+
+      .streamer-name {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+      }
+
+      /* SVG Icons styling */
+      svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 data-i18n="settingsHeader">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+          />
+        </svg>
+      </h1>
+
+      <div id="status" data-i18n="statusSaved"></div>
+
+      <div class="section">
+        <label data-i18n="labelTwitchName"></label>
+        <div class="input-group">
+          <input
+            type="text"
+            data-i18n-placeholder="placeholderTwitchName"
+            id="twitch-name"
+          />
+        </div>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px" />
+
+      <div class="section">
+        <label data-i18n="labelTrackedStreamers"></label>
+        <div class="input-group">
+          <input
+            type="text"
+            data-i18n-placeholder="placeholderAddStreamer"
+            id="new-streamer"
+          />
+          <button class="btn-primary" id="add-btn" title="">
+            <svg
+              viewBox="0 0 24 24"
+              style="
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2.5;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+              "
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="thStreamer"></th>
+              <th class="text-right" data-i18n="thAction"></th>
+            </tr>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 25px">
+        <button id="save" class="btn-save">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"
+            />
+          </svg>
+          <span data-i18n="btnSave"></span>
+        </button>
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>

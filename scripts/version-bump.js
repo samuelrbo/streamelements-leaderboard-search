@@ -3,16 +3,18 @@ const path = require('path');
 
 // Files path
 const paths = {
-  package: path.join(__dirname, 'package.json'),
-  packageLock: path.join(__dirname, 'package-lock.json'),
-  manifest: path.join(__dirname, 'extension', 'manifest.json')
+  package: path.join(__dirname, '..', 'package.json'),
+  packageLock: path.join(__dirname, '..', 'package-lock.json'),
+  manifest: path.join(__dirname, '..', 'extension', 'manifest.json'),
 };
 
 // Get the argument version (ex: node version-bump.js 1.1.2)
 const newVersion = process.argv[2];
 
 if (!newVersion) {
-  console.error('❌ Error: Provide a version. Example: node version-bump.js 1.1.2');
+  console.error(
+    '❌ Error: Provide a version. Example: node version-bump.js 1.1.2'
+  );
   process.exit(1);
 }
 
@@ -34,7 +36,7 @@ function updateJSON(filePath, key, value) {
 }
 
 function updateChangelog(version) {
-  const changelogPath = path.join(__dirname, 'docs', 'CHANGELOG.md');
+  const changelogPath = path.join(__dirname, '..', 'docs', 'CHANGELOG.md');
   if (fs.existsSync(changelogPath)) {
     let content = fs.readFileSync(changelogPath, 'utf8');
     const date = new Date().toISOString().split('T')[0];
@@ -55,6 +57,6 @@ updateJSON(paths.package, 'version', newVersion);
 updateJSON(paths.packageLock, 'version', newVersion);
 updateJSON(paths.manifest, 'version', newVersion);
 
-updateChangelog(newVersion)
+updateChangelog(newVersion);
 
-console.log("\n✨ All files synchronized!");
+console.log('\n✨ All files synchronized!');
