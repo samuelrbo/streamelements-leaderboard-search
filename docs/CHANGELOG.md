@@ -8,6 +8,10 @@ This project is licensed under **GPLv3**.
 
 ## [Unreleased]
 
+---
+
+## [1.2.0] - 2026-04-03
+
 ### Added
 
 - Plugin options
