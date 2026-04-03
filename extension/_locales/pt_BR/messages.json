@@ -6,17 +6,10 @@
   "searchPlaceholder": { "message": "Buscar por usuário" },
   "loadingResult": { "message": "Carregando..." },
   "emptyResult": { "message": "Sem resultado para busca" },
-  "searchError": { "message": "Erro na busca:" },
-  "abortSearch": { "message": "Busca anterior abortada:" },
-  "optionsTitle": { "message": "Configurações - StreamElements Search" },
   "settingsHeader": { "message": "Configurações" },
   "statusSaved": { "message": "Configurações salvas com sucesso!" },
   "labelTwitchName": { "message": "Seu Nome na Twitch" },
   "placeholderTwitchName": { "message": "Ex: samzuka" },
-  "twitchToken": { "message": "h6xxxxxxxxxxxxxxxxxxxx" },
-  "howToGetTwitchToken": {
-    "message": "Gere um <b>Token de Escopo Personalizado</b> em <a href='https://twitchtokengenerator.com/' target='_blank'>twitchtokengenerator.com</a>"
-  },
   "labelTrackedStreamers": {
     "message": "Streamers Monitorados <span id='totalStreamers'></span>"
   },
@@ -27,7 +20,5 @@
   "thAction": { "message": "AÇÃO" },
   "btnSave": { "message": "Salvar Configurações" },
   "saveMessage": { "message": "Configurações salvas com sucesso!" },
-  "errorLimitReached": { "message": "Limite de 5 streamers atingido!" },
-  "notificationTitle": { "message": "está ONLINE!" },
-  "notificationMessage": { "message": "Clique para assistir agora." }
+  "errorLimitReached": { "message": "Limite de 5 streamers atingido!" }
 }
